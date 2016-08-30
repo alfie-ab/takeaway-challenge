@@ -17,7 +17,7 @@ describe Menu do
 
   context "#included?" do
     it 'will check if food is on the menu' do
-      expect(subject.price_checker("fish")).to eq 5.0
+      expect(subject.included?("fish")).to eq true
     end
   end
 

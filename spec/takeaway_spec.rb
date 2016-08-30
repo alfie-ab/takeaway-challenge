@@ -15,23 +15,28 @@ describe Takeaway do
     end
   end
 
-  context '#select_food' do
+  context '#select_food with error' do
     it 'should raise an error if food is not on menu' do
       expect{subject.select_food("pancakes", 5)}.to raise_error(/not on the menu/)
     end
   end
 
-  context '#checkout' do
+  context '#checkout and #select_food without error' do
     before (:each) do
       allow(menu).to receive(:included?) {true}
     end
 
-      it 'should give back the total' do
-        subject.select_food("chicken", 1)
-        expect(subject.checkout).to eq 3.50
-      end
-
+    it 'should give back the total' do
+      subject.select_food("chicken", 1)
+      expect(subject.checkout).to eq 3.50
     end
+
+    it 'should add the food to the basket' do
+      subject.select_food("fish", 2)
+      expect(subject.basket).to eq "fish"=>2
+    end
+
+  end
 
   context '#confirmation_text' do
     it 'should receive the send_text method' do

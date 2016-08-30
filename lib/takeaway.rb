@@ -5,7 +5,7 @@ require_relative 'sms'
 
 class Takeaway
 
-  attr_reader :menu, :total
+  attr_reader :menu, :total, :basket
 
   def initialize(menu = Menu.new, sms_class = Text)
     @menu = menu
