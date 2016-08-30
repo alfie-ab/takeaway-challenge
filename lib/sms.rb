@@ -26,6 +26,6 @@ class Text
   end
 
   def time
-    Time.now
+    Time.new
   end
 end

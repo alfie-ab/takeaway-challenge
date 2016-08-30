@@ -19,13 +19,13 @@ class Takeaway
   end
 
   def select_food(food, amount)
-    raise "This item is not on the menu" if @menu.included?(food) == false
+    fail "This item is not on the menu" if @menu.included?(food) == false
     @basket[food] = amount
   end
 
   def checkout
-    @basket.each do |food, price|
-      @total += ((@menu.price_checker(food)) * price)
+    @basket.each do |food, amount|
+      @total += ((@menu.price_checker(food)) * amount)
     end
     @total
   end
